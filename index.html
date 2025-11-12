@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furkan Atalay - Full Stack Developer</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Preload critical images - Hero only for faster load -->
+  <link rel="preload" as="image" href="./img3.png" fetchpriority="high">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    /* FIXED: Background classes with correct syntax - optimized for mobile */
+    .hero-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.65), rgba(44, 62, 80, 0.75)), url('img3.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+    }
+    
+    .about-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('img2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .skills-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('img1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .services-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.65), rgba(44, 62, 80, 0.75)), url('img6.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .portfolio-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('img4.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    .contact-bg {
+      background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('img5.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    /* Mobile-first optimizations */
+    @media (max-width: 768px) {
+      .hero-bg, .about-bg, .skills-bg, .services-bg, .portfolio-bg, .contact-bg {
+        background-attachment: scroll !important;
+        background-size: cover;
+      }
+      
+      /* Hide desktop sidebar on mobile */
+      .nav-sidebar {
+        display: none !important;
+      }
+      
+      /* Show mobile nav */
+      .mobile-nav {
+        display: flex !important;
+      }
+      
+      /* Adjust main content for mobile nav */
+      main {
+        padding-top: 60px !important;
+      }
+    }
+    
+    /* Mobile Navigation - Hidden by default, shown on mobile */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(145deg, rgba(52, 73, 94, 0.98), rgba(44, 62, 80, 0.99));
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 8px 4px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .mobile-nav-container {
+      display: flex;
+      gap: 4px;
+      min-width: max-content;
+      padding: 0 4px;
+    }
+    
+    .mobile-nav-item {
+      flex-shrink: 0;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .mobile-nav-item i {
+      font-size: 14px;
+    }
+    
+    .mobile-nav-item.active {
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.2));
+      border-color: rgba(52, 152, 219, 0.4);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+    }
+    
+    .mobile-nav-item:active {
+      transform: scale(0.95);
+    }
+    
+    /* Fade animation */
+    .fade-cycle-text {
+      opacity: 1;
+      transition: opacity 0.4s ease-in-out;
+    }
+    
+    /* Skill bars */
+    .skill-bar {
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .skill-level {
+      height: 100%;
+      background-color: #3498db;
+      border-radius: 5px;
+      transition: width 1s ease;
+    }
+    /* --- NAV SIDEBAR CSS (verplaatst uit script) --- */
+    :root {
+      --primary-color: #3498db;
+    }
+    .nav-sidebar {
+      width: 90px;
+      background: linear-gradient(145deg, rgba(52, 73, 94, 0.95), rgba(44, 62, 80, 0.98));
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      z-index: 100;
+      box-shadow: 
+        4px 0 15px rgba(0, 0, 0, 0.1),
+        inset -1px 0 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-color), #9b59b6, var(--primary-color));
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+    .nav-item {
+      margin: 8px 0;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 14px 8px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      width: 75px;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(52, 152, 219, 0.3), transparent);
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      transform: translate(-50%, -50%);
+    }
+    .nav-item:hover::before {
+      left: 100%;
+    }
+    .nav-item:hover::after {
+      width: 60px;
+      height: 60px;
+    }
+    .nav-item.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.1));
+      border: 1px solid rgba(52, 152, 219, 0.3);
+      transform: scale(1.05);
+      box-shadow: 
+        0 8px 20px rgba(52, 152, 219, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .nav-item:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .nav-separator {
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 8px 0;
+      position: relative;
+    }
+    .nav-separator::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(45deg, var(--primary-color), #9b59b6);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    }
+    .nav-icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    .nav-item:hover .nav-icon {
+      transform: scale(1.1) translateY(-1px);
+      filter: drop-shadow(0 4px 8px rgba(52, 152, 219, 0.3));
+    }
+    .nav-item.active .nav-icon {
+      color: var(--primary-color);
+      transform: scale(1.1);
+      filter: drop-shadow(0 4px 8px rgba(52, 152, 219, 0.4));
+    }
+    .nav-label {
+      font-size: 0.65rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      line-height: 1.1;
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: visible;
+      max-width: 70px;
+    }
+    .nav-item:hover .nav-label,
+    .nav-item.active .nav-label {
+      opacity: 1;
+    }
+  </style>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3498db',
+            secondary: '#2c3e50',
+            accent: '#e74c3c',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'sans-serif'],
+            'serif': ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-900">
+  <!-- Mobile Navigation (Horizontal Top) -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-container">
+      <button onclick="showSection('hero')" class="mobile-nav-item active">
+        <i class="bi bi-house"></i>
+        <span data-key="nav-home">Home</span>
+      </button>
+      <button onclick="showSection('about')" class="mobile-nav-item">
+        <i class="bi bi-person"></i>
+        <span data-key="nav-about">About</span>
+      </button>
+      <button onclick="showSection('skills')" class="mobile-nav-item">
+        <i class="bi bi-code-slash"></i>
+        <span data-key="nav-skills">Skills</span>
+      </button>
+      <button onclick="showSection('services')" class="mobile-nav-item">
+        <i class="bi bi-briefcase"></i>
+        <span data-key="nav-services">Services</span>
+      </button>
+      <button onclick="showSection('portfolio')" class="mobile-nav-item">
+        <i class="bi bi-folder"></i>
+        <span data-key="nav-portfolio">Portfolio</span>
+      </button>
+      <button onclick="showSection('contact')" class="mobile-nav-item">
+        <i class="bi bi-envelope"></i>
+        <span data-key="nav-contact">Contact</span>
+      </button>
+    </div>
+  </nav>
+  
+  <div class="flex h-screen flex-col md:flex-row">
+    
+  <!-- Navigation Sidebar (Desktop Only) -->
+      
+      <!-- Navigation Sidebar -->
+      <nav class="nav-sidebar">
+        <button onclick="showSection('hero')" class="nav-item active">
+          <i class="bi bi-house nav-icon"></i>
+          <span class="nav-label" data-key="nav-home">Home</span>
+        </button>
+        <div class="nav-separator"></div>
+        <button onclick="showSection('about')" class="nav-item">
+          <i class="bi bi-person nav-icon"></i>
+          <span class="nav-label" data-key="nav-about">About</span>
+        </button>
+        <div class="nav-separator"></div>
+        <button onclick="showSection('skills')" class="nav-item">
+          <i class="bi bi-code-slash nav-icon"></i>
+          <span class="nav-label" data-key="nav-skills">Skills</span>
+        </button>
+        <div class="nav-separator"></div>
+        <button onclick="showSection('services')" class="nav-item">
+          <i class="bi bi-briefcase nav-icon"></i>
+          <span class="nav-label" data-key="nav-services">Services</span>
+        </button>
+        <div class="nav-separator"></div>
+        <button onclick="showSection('portfolio')" class="nav-item">
+          <i class="bi bi-folder nav-icon"></i>
+          <span class="nav-label" data-key="nav-portfolio">Portfolio</span>
+        </button>
+        <div class="nav-separator"></div>
+        <button onclick="showSection('contact')" class="nav-item">
+          <i class="bi bi-envelope nav-icon"></i>
+          <span class="nav-label" data-key="nav-contact">Contact</span>
+        </button>
+      </nav>
+      <main class="flex-1 overflow-hidden relative">
+      
+      <!-- Hero Section -->
+      <section id="hero" class="content-section active absolute inset-0 hero-bg flex items-start justify-center text-white">
+        <div class="text-center max-w-2xl px-2 pt-6 md:pt-10 flex flex-col items-center justify-start" style="min-height:0; margin-top:0;">
+          <!-- Social Links -->
+          <div class="flex justify-center gap-2 mb-3">
+            <a href="https://www.linkedin.com/in/furkan-atalay-48ab84356/" target="_blank" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:-translate-y-1 transition-all">
+              <i class="bi bi-linkedin text-base"></i>
+            </a>
+            <a href="https://github.com/frknatalay42-png" target="_blank" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:-translate-y-1 transition-all">
+              <i class="bi bi-github text-base"></i>
+            </a>
+            <a href="https://instagram.com/90fa42" target="_blank" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:-translate-y-1 transition-all">
+              <i class="bi bi-instagram text-base"></i>
+            </a>
+          </div>
+          <!-- Hero Name & Title -->
+          <h1 class="font-serif text-2xl md:text-3xl mb-2 text-white drop-shadow-xl" style="font-family: 'Playfair Display', serif; font-weight: 500; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">Furkan Atalay</h1>
+          <p class="text-sm md:text-base font-light tracking-widest uppercase opacity-90 mb-1 text-white drop-shadow-xl" style="font-family: 'Inter', system-ui, sans-serif; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">Full Stack Developer</p>
+          <!-- Fade Cycle Text -->
+          <div class="my-2">
+            <span id="fade-cycle-text" class="fade-cycle-text text-lg md:text-2xl text-primary inline-block font-semibold drop-shadow-2xl" style="font-family: 'Inter', system-ui, sans-serif; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">Python Specialist</span>
+          </div>
+          <!-- Language Switcher -->
+          <div class="flex justify-center gap-2 mt-2">
+            <button onclick="changeLanguage('en')" class="lang-btn active px-3 py-1 rounded bg-white/20 border border-white/30 text-white font-semibold text-xs shadow hover:bg-primary/40 transition-all" style="font-family: 'Inter', system-ui, sans-serif; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">EN</button>
+            <button onclick="changeLanguage('nl')" class="lang-btn px-3 py-1 rounded bg-white/10 border border-white/20 text-white/80 font-semibold text-xs shadow hover:bg-primary/30 transition-all" style="font-family: 'Inter', system-ui, sans-serif; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">NL</button>
+            <button onclick="changeLanguage('tr')" class="lang-btn px-3 py-1 rounded bg-white/10 border border-white/20 text-white/80 font-semibold text-xs shadow hover:bg-primary/30 transition-all" style="font-family: 'Inter', system-ui, sans-serif; text-shadow: 0 2px 12px #000, 0 1px 0 #222;">TR</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- About Section -->
+      <section id="about" class="content-section absolute inset-0 about-bg hidden overflow-y-auto">
+        <div class="min-h-full flex items-center justify-center py-12 px-6">
+          <div class="max-w-5xl w-full">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+              <!-- Profile Image -->
+              <div class="text-center">
+                <img src="img6.jpeg" alt="Furkan Atalay" class="w-64 h-64 md:w-72 md:h-72 rounded-full object-cover border-4 border-primary mx-auto shadow-2xl">
+              </div>
+              
+              <!-- About Content -->
+              <div class="md:col-span-2 text-white">
+                <h2 class="font-serif text-4xl font-bold mb-4 drop-shadow-lg" data-key="about-title">About Me</h2>
+                 <p class="text-xs md:text-sm font-light mb-2 text-white/90 drop-shadow" style="line-height:1.4;">Full-stack developer (Python, JavaScript). Started with HTML, now focused on efficient, scalable web solutions. Always learning.</p>
+                
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                  <div>
+                    <p class="mb-2"><strong class="text-primary" data-key="about-location">Location:</strong> Rotterdam - Istanbul</p>
+                    <p class="mb-2"><strong class="text-primary" data-key="about-phone">Phone:</strong> +31 6 27280008</p>
+                  </div>
+                  <div>
+                    <p class="mb-2"><strong class="text-primary" data-key="about-email">Email:</strong> frknatalay42@gmail.com</p>
+                    <p class="mb-2"><strong class="text-primary" data-key="about-freelance">Freelance:</strong> Available</p>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Skills Section -->
+      <section id="skills" class="content-section absolute inset-0 skills-bg hidden overflow-y-auto">
+        <div class="min-h-full py-6 px-2">
+          <div class="max-w-5xl mx-auto text-white text-xs">
+            <h2 class="font-serif text-xl font-bold mb-2 drop-shadow-lg text-center" data-key="skills-title">My Skills</h2>
+            <p class="text-xs leading-snug mb-4 drop-shadow text-center" data-key="skills-intro">I specialize in full-stack development with a focus on creating efficient and scalable applications.</p>
+            <div class="grid md:grid-cols-2 gap-3">
+              <!-- Left Column -->
+              <div class="space-y-2">
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">HTML</span>
+                    <span class="text-xs">100%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 100%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">CSS</span>
+                    <span class="text-xs">90%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 90%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">JavaScript</span>
+                    <span class="text-xs">85%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Column -->
+              <div class="space-y-2">
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">Python</span>
+                    <span class="text-xs">80%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 80%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">Node.js</span>
+                    <span class="text-xs">75%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-0.5">
+                    <span class="font-medium text-xs">React</span>
+                    <span class="text-xs">70%</span>
+                  </div>
+                  <div class="skill-bar h-2">
+                    <div class="skill-level" style="width: 70%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Languages -->
+            <div class="mt-6">
+              <h3 class="font-serif text-base font-semibold mb-2 drop-shadow" data-key="languages-title">Languages</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-primary/30 border border-primary/50 rounded-full text-[11px] font-medium">English</span>
+                <span class="px-2 py-1 bg-primary/30 border border-primary/50 rounded-full text-[11px] font-medium">Dutch</span>
+                <span class="px-2 py-1 bg-primary/30 border border-primary/50 rounded-full text-[11px] font-medium">Turkish</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Services Section -->
+      <section id="services" class="content-section absolute inset-0 services-bg hidden overflow-y-auto">
+        <div class="min-h-full py-12 px-6">
+          <div class="max-w-6xl mx-auto text-white">
+            <!-- Services Tab Navigation -->
+            <div class="flex justify-center gap-2 mb-4 flex-wrap">
+              <button onclick="showServiceTab('website-design')" class="service-tab-btn active px-3 py-1.5 rounded-lg bg-primary/30 border border-primary/50 hover:bg-primary/40 text-xs font-semibold transition-all" data-key="service-tab-webdesign">Website Design</button>
+              <button onclick="showServiceTab('software-dev')" class="service-tab-btn px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 text-xs font-semibold transition-all" data-key="service-tab-software">Software Development</button>
+              <button onclick="showServiceTab('app-dev')" class="service-tab-btn px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 text-xs font-semibold transition-all" data-key="service-tab-app">App Development</button>
+            </div>
+            
+            <!-- Website Design Tab -->
+            <div id="website-design-tab" class="service-tab-content">
+            <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 mb-4">
+              <h3 class="font-serif text-lg md:text-xl font-semibold mb-2 text-white drop-shadow-xl" data-key="services-custom-title" style="text-shadow: 0 2px 12px #000, 0 1px 0 #222; background: none; border: none; padding: 0;">Maatwerk Websites &amp; Webapplicaties</h3>
+              
+              <div class="space-y-2 text-xs md:text-sm leading-relaxed">
+                <p data-key="services-desc-1">Ik ontwikkel professionele websites en webapplicaties volledig op maat voor jouw bedrijf. Of je nu een modern portfolio, een uitgebreide webshop, of een complexe bedrijfsapplicatie nodig hebt - ik lever oplossingen die perfect aansluiten bij jouw wensen.</p>
+                
+                <p class="font-semibold text-sm md:text-base mt-3 mb-1" data-key="services-list-title">Wat ik voor je kan bouwen:</p>
+                
+                <ul class="space-y-1.5 ml-3">
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-1-title">Inlogsystemen met urenregistratie</strong> - <span data-key="services-li-1-desc">Volledig beveiligde portals waar medewerkers kunnen inloggen en hun gewerkte uren kunnen bijhouden.</span></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-2-title">Boekhoud-extensies &amp; business tools</strong> - <span data-key="services-li-2-desc">Integratie met boekhoudsoftware, automatische factuurverwerking, en financiële rapportages.</span></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-3-title">E-commerce webshops</strong> - <span data-key="services-li-3-desc">Moderne online winkels met betalingsintegratie, voorraadbeheer, en gebruiksvriendelijke checkout.</span></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-4-title">Portfolio &amp; bedrijfswebsites</strong> - <span data-key="services-li-4-desc">Professionele websites die jouw merk perfect presenteren.</span></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-5-title">Real estate platforms</strong> - <span data-key="services-li-5-desc">Vastgoedplatforms met zoekfunctionaliteit en property management.</span></span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                    <span class="text-xs"><strong data-key="services-li-6-title">Maatwerk oplossingen</strong> - <span data-key="services-li-6-desc">Elke unieke functionaliteit van API-integraties tot automatiseringen.</span></span>
+                  </li>
+                </ul>
+                
+                <p class="mt-3 text-xs italic bg-white/5 p-2 rounded-lg border border-white/10" data-key="services-note">
+                  Elke site krijgt een unieke, moderne of minimalistische look, afgestemd op jouw wensen. Voorbeeldsites kunnen qua kleur en stijl minimalistisch of juist inconsistent zijn.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Template Examples -->
+            <div class="mt-4">
+              <h3 class="font-serif text-lg md:text-xl font-semibold mb-3 text-center drop-shadow" data-key="services-examples-title">Voorbeelden van Websites die ik Kan Bouwen</h3>
+              
+              <div class="grid grid-cols-2 md:grid-cols-5 gap-2 max-w-4xl mx-auto">
+                <!-- Photography Template -->
+                <a href="./templates/Photography/index.html" target="_blank" class="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-1.5 hover:bg-white/15 hover:border-primary hover:scale-105 transition-all text-center min-w-[60px] min-h-[60px]">
+                  <i class="bi bi-camera text-lg text-primary mb-0.5 block group-hover:scale-110 transition-transform"></i>
+                  <span class="text-[10px] font-medium block">Photo</span>
+                </a>
+                <!-- Real Estate 1 Template -->
+                <a href="./templates/Real Estate 1/index.html" target="_blank" class="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-1.5 hover:bg-white/15 hover:border-primary hover:scale-105 transition-all text-center min-w-[60px] min-h-[60px]">
+                  <i class="bi bi-house-door text-lg text-primary mb-0.5 block group-hover:scale-110 transition-transform"></i>
+                  <span class="text-[10px] font-medium block">Estate 1</span>
+                </a>
+                <!-- Real Estate 2 Template -->
+                <a href="./templates/Real Estate 2/index.html" target="_blank" class="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-1.5 hover:bg-white/15 hover:border-primary hover:scale-105 transition-all text-center min-w-[60px] min-h-[60px]">
+                  <i class="bi bi-building text-lg text-primary mb-0.5 block group-hover:scale-110 transition-transform"></i>
+                  <span class="text-[10px] font-medium block">Estate 2</span>
+                </a>
+                <!-- Webshop Template -->
+                <a href="./templates/Webshop/templatemo_590_topic_listing/index.html" target="_blank" class="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-1.5 hover:bg-white/15 hover:border-primary hover:scale-105 transition-all text-center min-w-[60px] min-h-[60px]">
+                  <i class="bi bi-shop text-lg text-primary mb-0.5 block group-hover:scale-110 transition-transform"></i>
+                  <span class="text-[10px] font-medium block">Shop</span>
+                </a>
+                <!-- Webshop 2 Template -->
+                <a href="./templates/Webshop 2/index.html" target="_blank" class="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg p-1.5 hover:bg-white/15 hover:border-primary hover:scale-105 transition-all text-center min-w-[60px] min-h-[60px]">
+                  <i class="bi bi-cart text-lg text-primary mb-0.5 block group-hover:scale-110 transition-transform"></i>
+                  <span class="text-[10px] font-medium block">Shop 2</span>
+                </a>
+              </div>
+            </div>
+            </div>
+            
+            <!-- Software Development Tab -->
+            <div id="software-dev-tab" class="service-tab-content hidden">
+              <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 mb-4">
+                <h3 class="font-serif text-lg md:text-xl font-semibold mb-2 text-white drop-shadow-xl" data-key="software-dev-title" style="text-shadow: 0 2px 12px #000, 0 1px 0 #222; background: none; border: none; padding: 0;">Software Development</h3>
+                
+                <div class="space-y-2 text-xs md:text-sm leading-relaxed">
+                  <p data-key="software-dev-desc">Ik ontwikkel krachtige, op maat gemaakte softwareoplossingen voor bedrijven van elke omvang. Van automatiseringssystemen tot data-analyse tools - ik bouw software die processen stroomlijnt en productiviteit verhoogt.</p>
+                  
+                  <p class="font-semibold text-sm md:text-base mt-3 mb-1" data-key="software-dev-list-title">Mijn expertise:</p>
+                  
+                  <ul class="space-y-1.5 ml-3">
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="software-dev-li-1-title">Process automation</strong> - <span data-key="software-dev-li-1-desc">Automatiseer repetitieve taken en verhoog efficiency.</span></span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="software-dev-li-2-title">Data analysis & reporting</strong> - <span data-key="software-dev-li-2-desc">Bouw tools voor data-analyse en rapportage.</span></span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="software-dev-li-3-title">API integraties</strong> - <span data-key="software-dev-li-3-desc">Verbind verschillende systemen en platforms.</span></span>
+                    </li>
+                  </ul>
+                  
+                  <p class="mt-3 text-xs italic bg-white/5 p-2 rounded-lg border border-white/10" data-key="software-dev-note">
+                    Elke softwareoplossing wordt gebouwd met moderne technologieën en best practices, afgestemd op jouw specifieke behoeften.
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Placeholder for future examples -->
+              <div class="mt-4">
+                <h3 class="font-serif text-lg md:text-xl font-semibold mb-3 text-center drop-shadow" data-key="software-dev-examples-title">Voorbeelden (coming soon)</h3>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-8 text-center">
+                  <p class="text-xs opacity-75 italic" data-key="software-dev-examples-placeholder">Voorbeeldprojecten worden hier binnenkort toegevoegd.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- App Development Tab -->
+            <div id="app-dev-tab" class="service-tab-content hidden">
+              <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 mb-4">
+                <h3 class="font-serif text-lg md:text-xl font-semibold mb-2 text-white drop-shadow-xl" data-key="app-dev-title" style="text-shadow: 0 2px 12px #000, 0 1px 0 #222; background: none; border: none; padding: 0;">App Development</h3>
+                
+                <div class="space-y-2 text-xs md:text-sm leading-relaxed">
+                  <p data-key="app-dev-desc">Ik ontwikkel moderne, gebruiksvriendelijke mobiele en desktop applicaties. Van native apps tot cross-platform oplossingen - ik bouw apps die een naadloze gebruikerservaring bieden.</p>
+                  
+                  <p class="font-semibold text-sm md:text-base mt-3 mb-1" data-key="app-dev-list-title">Wat ik ontwikkel:</p>
+                  
+                  <ul class="space-y-1.5 ml-3">
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="app-dev-li-1-title">Mobile apps</strong> - <span data-key="app-dev-li-1-desc">Native en cross-platform mobiele applicaties.</span></span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="app-dev-li-2-title">Desktop applicaties</strong> - <span data-key="app-dev-li-2-desc">Krachtige desktop software voor Windows, Mac en Linux.</span></span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="bi bi-check-circle-fill text-primary mr-2 mt-0.5 flex-shrink-0 text-sm"></i>
+                      <span class="text-xs"><strong data-key="app-dev-li-3-title">Progressive Web Apps</strong> - <span data-key="app-dev-li-3-desc">Web apps die werken als native applicaties.</span></span>
+                    </li>
+                  </ul>
+                  
+                  <p class="mt-3 text-xs italic bg-white/5 p-2 rounded-lg border border-white/10" data-key="app-dev-note">
+                    Alle apps worden ontworpen met focus op gebruiksvriendelijkheid, performance en veiligheid.
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Placeholder for future examples -->
+              <div class="mt-4">
+                <h3 class="font-serif text-lg md:text-xl font-semibold mb-3 text-center drop-shadow" data-key="app-dev-examples-title">Voorbeelden (coming soon)</h3>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-8 text-center">
+                  <p class="text-xs opacity-75 italic" data-key="app-dev-examples-placeholder">Voorbeeldprojecten worden hier binnenkort toegevoegd.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="content-section absolute inset-0 portfolio-bg hidden overflow-y-auto">
+        <div class="min-h-full py-6 px-2">
+          <div class="max-w-5xl mx-auto text-white text-xs">
+            <h2 class="font-serif text-xl font-bold mb-3 drop-shadow-lg text-center" data-key="portfolio-title">My Portfolio</h2>
+            <!-- Portfolio Navigation -->
+            <div class="flex justify-center gap-2 mb-4 flex-wrap">
+              <button onclick="showPortfolio('nowanest')" class="portfolio-btn active px-2 py-1 rounded-lg bg-primary/30 border border-primary/50 hover:bg-primary/40 text-[11px] font-medium transition-all">Nowanest</button>
+              <button onclick="showPortfolio('minor')" class="portfolio-btn px-2 py-1 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 text-[11px] font-medium transition-all">Minor Projects</button>
+            </div>
+            <!-- Nowanest Section -->
+            <div id="nowanest-portfolio" class="portfolio-section">
+              <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-3 mb-3">
+                <h3 class="font-serif text-base font-semibold mb-1">Nowanest Foundation</h3>
+                <p class="text-[11px] text-primary mb-2">Non-Profit Foundation</p>
+                <p class="leading-snug mb-2">Non-profit foundation die vrije, open-source software ontwikkelt voor ondernemers en ZZP's. Wij bieden gratis alternatieven voor dure boekhoudapps met volledige data-soevereiniteit.</p>
+                <p class="leading-snug">Onze missie is ondernemers financieel onafhankelijk maken door kostbare abonnementen te vervangen met betrouwbare, gratis tools.</p>
+              </div>
+              <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-3">
+                <h3 class="font-serif text-base font-semibold mb-1">Openvault: Smart Tax</h3>
+                <p class="text-[11px] text-primary mb-2">Privacy-First Government Form Autofill</p>
+                <p class="leading-snug mb-2">Privacy-first Chrome/Edge extensie voor veilige autofill op Nederlandse overheidswebsites (KvK, Belastingdienst, Overheid). Alle data blijft lokaal versleuteld.</p>
+                <p class="leading-snug">Zero-knowledge beveiliging: AES-256-GCM encryptie, geen servers, alleen vertrouwde domeinen. Inclusief bedrijfsbeheer, urenregistratie en BTW-berekening.</p>
+              </div>
+            </div>
+            <!-- Minor Projects Section -->
+            <div id="minor-portfolio" class="portfolio-section hidden">
+              <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-6 text-center">
+                <h3 class="font-serif text-lg font-semibold mb-2">Minor Projects</h3>
+                <p class="text-xs opacity-80">Additional projects and collaborations will be showcased here as they develop.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Contact Section -->
+      <section id="contact" class="content-section absolute inset-0 contact-bg hidden overflow-y-auto">
+        <div class="min-h-full flex items-start justify-center pt-8 md:pt-12 px-2">
+          <div class="max-w-3xl w-full text-white text-center text-xs">
+            <h2 class="font-serif text-lg font-bold mb-2 drop-shadow-lg" data-key="contact-title">Get In Touch</h2>
+            <p class="text-xs mb-4 drop-shadow" data-key="contact-intro">Feel free to reach out to me using the contact information below.</p>
+            <div class="space-y-4">
+              <div class="flex items-center justify-center gap-2">
+                <i class="bi bi-geo-alt text-base text-primary"></i>
+                <div class="text-left">
+                  <h5 class="font-semibold mb-0.5 text-xs" data-key="contact-location">Location</h5>
+                  <p class="opacity-90 text-xs">Rotterdam - Istanbul</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <i class="bi bi-telephone text-base text-primary"></i>
+                <div class="text-left">
+                  <h5 class="font-semibold mb-0.5 text-xs" data-key="contact-phone">Phone</h5>
+                  <p class="opacity-90 text-xs">+31 6 27280008</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <i class="bi bi-envelope text-base text-primary"></i>
+                <div class="text-left">
+                  <h5 class="font-semibold mb-0.5 text-xs" data-key="contact-email">Email</h5>
+                  <p class="opacity-90 text-xs">frknatalay42@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+
+  <script>
+    // Preload images for better performance
+    function preloadImages() {
+      const priorityImages = ['img3.png', 'img6.jpeg'];
+      const otherImages = ['img2.jpeg', 'img1.jpg', 'img4.jpeg', 'img5.jpeg'];
+      
+      priorityImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+      
+      setTimeout(() => {
+        otherImages.forEach(src => {
+          const img = new Image();
+          img.src = src;
+        });
+      }, 500);
+    }
+    
+    window.addEventListener('load', preloadImages);
+    
+    // Section navigation (updated for mobile & desktop)
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.add('hidden');
+        section.classList.remove('active');
+      });
+      
+      // Show target section
+      const targetSection = document.getElementById(sectionId);
+      targetSection.classList.remove('hidden');
+      targetSection.classList.add('active');
+      
+      // Update desktop nav buttons
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary/30', 'border-primary/50');
+        btn.classList.add('bg-white/5', 'border-white/10');
+      });
+      
+      // Update mobile nav buttons
+      document.querySelectorAll('.mobile-nav-item').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Find and activate current button (works for both mobile and desktop)
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+        
+        // Only update desktop styles if it's a desktop nav item
+        if (event.currentTarget.classList.contains('nav-item')) {
+          event.currentTarget.classList.remove('bg-white/5', 'border-white/10');
+          event.currentTarget.classList.add('bg-primary/30', 'border-primary/50');
+        }
+      }
+    }
+    
+    // Portfolio navigation
+    function showPortfolio(portfolioId) {
+      // Hide all portfolio sections
+      document.querySelectorAll('.portfolio-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      // Show target portfolio
+      document.getElementById(portfolioId + '-portfolio').classList.remove('hidden');
+      
+      // Update portfolio buttons
+      document.querySelectorAll('.portfolio-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary/30', 'border-primary/50');
+        btn.classList.add('bg-white/10', 'border-white/20');
+      });
+      
+      event.currentTarget.classList.add('active');
+      event.currentTarget.classList.remove('bg-white/10', 'border-white/20');
+      event.currentTarget.classList.add('bg-primary/30', 'border-primary/50');
+    }
+    
+    // Service tab navigation
+    function showServiceTab(tabId) {
+      // Hide all service tabs
+      document.querySelectorAll('.service-tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+      
+      // Show target tab
+      document.getElementById(tabId + '-tab').classList.remove('hidden');
+      
+      // Update tab buttons
+      document.querySelectorAll('.service-tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary/30', 'border-primary/50');
+        btn.classList.add('bg-white/10', 'border-white/20');
+      });
+      
+      event.currentTarget.classList.add('active');
+      event.currentTarget.classList.remove('bg-white/10', 'border-white/20');
+      event.currentTarget.classList.add('bg-primary/30', 'border-primary/50');
+    }
+    
+    // Language switching
+    const translations = {
+      en: {
+        "nav-home": "Home",
+        "nav-about": "About",
+        "nav-skills": "Skills",
+        "nav-services": "Services",
+        "nav-portfolio": "Portfolio",
+        "nav-contact": "Contact",
+        "hero-title": "Furkan Atalay",
+        "hero-subtitle": "Full Stack Developer",
+        "about-title": "About Me",
+        "about-text": "I am a passionate full-stack developer with expertise in Python and JavaScript. My journey in web development started with HTML, which remains my strongest skill. I enjoy creating efficient, scalable solutions and am always eager to learn new technologies.",
+        "about-location": "Location:",
+        "about-phone": "Phone:",
+        "about-email": "Email:",
+        "about-freelance": "Freelance:",
+        "skills-title": "My Skills",
+        "skills-intro": "I specialize in full-stack development with a focus on creating efficient and scalable applications.",
+        "languages-title": "Languages",
+        "services-title": "Services",
+        "service-tab-webdesign": "Website Design",
+        "service-tab-software": "Software Development",
+        "service-tab-app": "App Development",
+        "services-intro": "I build every type of website for businesses - from simple portfolios to complex web applications with complete functionality.",
+        "services-custom-title": "Custom Websites & Web Applications",
+  "services-desc-1": "I develop professional, custom websites and web applications for your business. Whether you need a modern portfolio, a full-featured webshop, or a complex business app — I deliver solutions that match your needs.",
+  "services-list-title": "What I can build for you:",
+  "services-li-1-title": "Login portals with time tracking",
+  "services-li-1-desc": "Fully secured portals where employees can log in and record worked hours.",
+  "services-li-2-title": "Accounting extensions & business tools",
+  "services-li-2-desc": "Integration with accounting software, automated invoicing, and financial reporting.",
+  "services-li-3-title": "E-commerce webshops",
+  "services-li-3-desc": "Modern online stores with payments, inventory, and a smooth checkout.",
+  "services-li-4-title": "Portfolio & business websites",
+  "services-li-4-desc": "Professional websites that present your brand perfectly.",
+  "services-li-5-title": "Real estate platforms",
+  "services-li-5-desc": "Property platforms with search and property management.",
+  "services-li-6-title": "Custom solutions",
+  "services-li-6-desc": "Any unique functionality from API integrations to automation.",
+  "services-note": "Every site gets a unique, modern or minimal look, tailored to your wishes. Example sites can vary in color and style.",
+        "services-examples-title": "Examples of Websites I Can Build",
+        "software-dev-title": "Software Development",
+        "software-dev-desc": "I develop powerful, custom software solutions for businesses of any size. From automation systems to data analysis tools — I build software that streamlines processes and boosts productivity.",
+        "software-dev-list-title": "My expertise:",
+        "software-dev-li-1-title": "Process automation",
+        "software-dev-li-1-desc": "Automate repetitive tasks and increase efficiency.",
+        "software-dev-li-2-title": "Data analysis & reporting",
+        "software-dev-li-2-desc": "Build tools for data analysis and reporting.",
+        "software-dev-li-3-title": "API integrations",
+        "software-dev-li-3-desc": "Connect different systems and platforms.",
+        "software-dev-note": "Every software solution is built with modern technologies and best practices, tailored to your specific needs.",
+        "software-dev-examples-title": "Examples (coming soon)",
+        "software-dev-examples-placeholder": "Example projects will be added here soon.",
+        "app-dev-title": "App Development",
+        "app-dev-desc": "I develop modern, user-friendly mobile and desktop applications. From native apps to cross-platform solutions — I build apps that offer a seamless user experience.",
+        "app-dev-list-title": "What I develop:",
+        "app-dev-li-1-title": "Mobile apps",
+        "app-dev-li-1-desc": "Native and cross-platform mobile applications.",
+        "app-dev-li-2-title": "Desktop applications",
+        "app-dev-li-2-desc": "Powerful desktop software for Windows, Mac, and Linux.",
+        "app-dev-li-3-title": "Progressive Web Apps",
+        "app-dev-li-3-desc": "Web apps that work like native applications.",
+        "app-dev-note": "All apps are designed with a focus on user-friendliness, performance, and security.",
+        "app-dev-examples-title": "Examples (coming soon)",
+        "app-dev-examples-placeholder": "Example projects will be added here soon.",
+        "services-examples-subtitle": "View different types of websites I have developed below:",
+        "portfolio-title": "My Portfolio",
+        "contact-title": "Get In Touch",
+        "contact-intro": "Feel free to reach out to me using the contact information below.",
+        "contact-location": "Location",
+        "contact-phone": "Phone",
+        "contact-email": "Email"
+      },
+      nl: {
+        "nav-home": "Home",
+        "nav-about": "Over Mij",
+        "nav-skills": "Skills",
+        "nav-services": "Diensten",
+        "nav-portfolio": "Portfolio",
+        "nav-contact": "Contact",
+        "hero-title": "Furkan Atalay",
+        "hero-subtitle": "Full Stack Developer",
+        "about-title": "Over Mij",
+        "about-text": "Ik ben een gepassioneerde full-stack developer met expertise in Python en JavaScript. Mijn reis in webdevelopment begon met HTML, wat nog steeds mijn sterkste vaardigheid is. Ik geniet van het creëren van efficiënte, schaalbare oplossingen en ben altijd gretig om nieuwe technologieën te leren.",
+        "about-location": "Locatie:",
+        "about-phone": "Telefoon:",
+        "about-email": "E-mail:",
+        "about-freelance": "Freelance:",
+        "skills-title": "Mijn Skills",
+        "skills-intro": "Ik ben gespecialiseerd in full-stack development met focus op het creëren van efficiënte en schaalbare applicaties.",
+        "languages-title": "Talen",
+        "services-title": "Diensten",
+        "service-tab-webdesign": "Website Design",
+        "service-tab-software": "Software Development",
+        "service-tab-app": "App Development",
+        "services-intro": "Ik bouw elke soort website voor bedrijven - van simpele portfolios tot complexe webapplicaties met complete functionaliteit.",
+        "services-custom-title": "Maatwerk Websites & Webapplicaties",
+  "services-desc-1": "Ik ontwikkel professionele websites en webapplicaties volledig op maat voor jouw bedrijf. Of je nu een modern portfolio, een uitgebreide webshop, of een complexe bedrijfsapplicatie nodig hebt - ik lever oplossingen die perfect aansluiten bij jouw wensen.",
+  "services-list-title": "Wat ik voor je kan bouwen:",
+  "services-li-1-title": "Inlogsystemen met urenregistratie",
+  "services-li-1-desc": "Volledig beveiligde portals waar medewerkers kunnen inloggen en hun gewerkte uren kunnen bijhouden.",
+  "services-li-2-title": "Boekhoud-extensies & business tools",
+  "services-li-2-desc": "Integratie met boekhoudsoftware, automatische factuurverwerking, en financiële rapportages.",
+  "services-li-3-title": "E-commerce webshops",
+  "services-li-3-desc": "Moderne online winkels met betalingsintegratie, voorraadbeheer, en gebruiksvriendelijke checkout.",
+  "services-li-4-title": "Portfolio & bedrijfswebsites",
+  "services-li-4-desc": "Professionele websites die jouw merk perfect presenteren.",
+  "services-li-5-title": "Vastgoedplatforms",
+  "services-li-5-desc": "Vastgoedplatforms met zoekfunctionaliteit en property management.",
+  "services-li-6-title": "Maatwerk oplossingen",
+  "services-li-6-desc": "Elke unieke functionaliteit van API-integraties tot automatiseringen.",
+  "services-note": "Elke site krijgt een unieke, moderne of minimalistische look, afgestemd op jouw wensen. Voorbeeldsites kunnen qua kleur en stijl minimalistisch of juist inconsistent zijn.",
+        "services-examples-title": "Voorbeelden van Websites die ik Kan Bouwen",
+        "software-dev-title": "Software Development",
+        "software-dev-desc": "Ik ontwikkel krachtige, op maat gemaakte softwareoplossingen voor bedrijven van elke omvang. Van automatiseringssystemen tot data-analyse tools - ik bouw software die processen stroomlijnt en productiviteit verhoogt.",
+        "software-dev-list-title": "Mijn expertise:",
+        "software-dev-li-1-title": "Process automation",
+        "software-dev-li-1-desc": "Automatiseer repetitieve taken en verhoog efficiency.",
+        "software-dev-li-2-title": "Data analysis & reporting",
+        "software-dev-li-2-desc": "Bouw tools voor data-analyse en rapportage.",
+        "software-dev-li-3-title": "API integraties",
+        "software-dev-li-3-desc": "Verbind verschillende systemen en platforms.",
+        "software-dev-note": "Elke softwareoplossing wordt gebouwd met moderne technologieën en best practices, afgestemd op jouw specifieke behoeften.",
+        "software-dev-examples-title": "Voorbeelden (coming soon)",
+        "software-dev-examples-placeholder": "Voorbeeldprojecten worden hier binnenkort toegevoegd.",
+        "app-dev-title": "App Development",
+        "app-dev-desc": "Ik ontwikkel moderne, gebruiksvriendelijke mobiele en desktop applicaties. Van native apps tot cross-platform oplossingen - ik bouw apps die een naadloze gebruikerservaring bieden.",
+        "app-dev-list-title": "Wat ik ontwikkel:",
+        "app-dev-li-1-title": "Mobile apps",
+        "app-dev-li-1-desc": "Native en cross-platform mobiele applicaties.",
+        "app-dev-li-2-title": "Desktop applicaties",
+        "app-dev-li-2-desc": "Krachtige desktop software voor Windows, Mac en Linux.",
+        "app-dev-li-3-title": "Progressive Web Apps",
+        "app-dev-li-3-desc": "Web apps die werken als native applicaties.",
+        "app-dev-note": "Alle apps worden ontworpen met focus op gebruiksvriendelijkheid, performance en veiligheid.",
+        "app-dev-examples-title": "Voorbeelden (coming soon)",
+        "app-dev-examples-placeholder": "Voorbeeldprojecten worden hier binnenkort toegevoegd.",
+        "services-examples-subtitle": "Bekijk hieronder verschillende soorten websites die ik heb ontwikkeld:",
+        "portfolio-title": "Mijn Portfolio",
+        "contact-title": "Neem Contact Op",
+        "contact-intro": "Neem gerust contact met me op via onderstaande contactgegevens.",
+        "contact-location": "Locatie",
+        "contact-phone": "Telefoon",
+        "contact-email": "E-mail"
+      },
+      tr: {
+        "nav-home": "Ana Sayfa",
+        "nav-about": "Hakkımda",
+        "nav-skills": "Yetenek",
+        "nav-services": "Hizmetler",
+        "nav-portfolio": "Portföy",
+        "nav-contact": "İletişim",
+        "hero-title": "Furkan Atalay",
+        "hero-subtitle": "Full Stack Geliştirici",
+        "about-title": "Hakkımda",
+        "about-text": "Python ve JavaScript konusunda uzmanlığa sahip, tutkulu bir full-stack geliştiriciyim. Web geliştirme yolculuğum HTML ile başladı ve bu hala en güçlü becerim olmaya devam ediyor. Verimli, ölçeklenebilir çözümler oluşturmaktan keyif alıyorum ve her zaman yeni teknolojiler öğrenmeye hevesliyim.",
+        "about-location": "Konum:",
+        "about-phone": "Telefon:",
+        "about-email": "E-posta:",
+        "about-freelance": "Freelance:",
+        "skills-title": "Yeteneklerim",
+        "skills-intro": "Verimli ve ölçeklenebilir uygulamalar oluşturmaya odaklanan full-stack geliştirme konusunda uzmanım.",
+        "languages-title": "Diller",
+        "services-title": "Hizmetler",
+        "service-tab-webdesign": "Web Tasarımı",
+        "service-tab-software": "Yazılım Geliştirme",
+        "service-tab-app": "Uygulama Geliştirme",
+        "services-intro": "İşletmeler için her türlü web sitesi oluştururum - basit portföylerden tam işlevselliğe sahip karmaşık web uygulamalarına kadar.",
+        "services-custom-title": "Özel Web Siteleri ve Web Uygulamaları",
+  "services-desc-1": "İşletmeniz için profesyonel, ihtiyaca özel web siteleri ve web uygulamaları geliştiriyorum. Modern bir portföy, tam özellikli bir e‑ticaret sitesi veya karmaşık bir iş uygulaması — ihtiyaçlarınıza uygun çözümler sunarım.",
+  "services-list-title": "Sizin için neler geliştirebilirim:",
+  "services-li-1-title": "Giriş portalları ve saat takibi",
+  "services-li-1-desc": "Çalışanların giriş yapıp çalışma saatlerini kaydedebileceği tamamen güvenli portallar.",
+  "services-li-2-title": "Muhasebe eklentileri ve iş araçları",
+  "services-li-2-desc": "Muhasebe yazılımlarıyla entegrasyon, otomatik faturalama ve finansal raporlama.",
+  "services-li-3-title": "E‑ticaret mağazaları",
+  "services-li-3-desc": "Ödeme entegrasyonu, stok yönetimi ve akıcı ödeme süreci olan modern mağazalar.",
+  "services-li-4-title": "Portföy ve kurumsal web siteleri",
+  "services-li-4-desc": "Markanızı kusursuz şekilde sunan profesyonel siteler.",
+  "services-li-5-title": "Gayrimenkul platformları",
+  "services-li-5-desc": "Arama özellikleri ve ilan/portföy yönetimi.",
+  "services-li-6-title": "Özel çözümler",
+  "services-li-6-desc": "API entegrasyonlarından otomasyonlara kadar benzersiz fonksiyonlar.",
+  "services-note": "Her site isteklerinize göre modern veya minimal bir görünümle, size özel tasarlanır. Örnek sitelerin renk ve stili değişiklik gösterebilir.",
+        "services-examples-title": "Oluşturabileceğim Web Sitesi Örnekleri",
+        "software-dev-title": "Yazılım Geliştirme",
+        "software-dev-desc": "Her büyüklükteki işletme için güçlü, özel yazılım çözümleri geliştiriyorum. Otomasyon sistemlerinden veri analizi araçlarına kadar — süreçleri kolaylaştıran ve verimliliği artıran yazılımlar oluşturuyorum.",
+        "software-dev-list-title": "Uzmanlık alanlarım:",
+        "software-dev-li-1-title": "Süreç otomasyonu",
+        "software-dev-li-1-desc": "Tekrarlayan görevleri otomatikleştirin ve verimliliği artırın.",
+        "software-dev-li-2-title": "Veri analizi ve raporlama",
+        "software-dev-li-2-desc": "Veri analizi ve raporlama için araçlar geliştirin.",
+        "software-dev-li-3-title": "API entegrasyonları",
+        "software-dev-li-3-desc": "Farklı sistemleri ve platformları bağlayın.",
+        "software-dev-note": "Her yazılım çözümü, özel ihtiyaçlarınıza uygun olarak modern teknolojiler ve en iyi uygulamalarla geliştirilir.",
+        "software-dev-examples-title": "Örnekler (yakında)",
+        "software-dev-examples-placeholder": "Örnek projeler yakında eklenecek.",
+        "app-dev-title": "Uygulama Geliştirme",
+        "app-dev-desc": "Modern, kullanıcı dostu mobil ve masaüstü uygulamaları geliştiriyorum. Yerel uygulamalardan çapraz platform çözümlerine kadar — kusursuz kullanıcı deneyimi sunan uygulamalar oluşturuyorum.",
+        "app-dev-list-title": "Neler geliştiriyorum:",
+        "app-dev-li-1-title": "Mobil uygulamalar",
+        "app-dev-li-1-desc": "Yerel ve çapraz platform mobil uygulamalar.",
+        "app-dev-li-2-title": "Masaüstü uygulamaları",
+        "app-dev-li-2-desc": "Windows, Mac ve Linux için güçlü masaüstü yazılımları.",
+        "app-dev-li-3-title": "Progressive Web Apps",
+        "app-dev-li-3-desc": "Yerel uygulamalar gibi çalışan web uygulamaları.",
+        "app-dev-note": "Tüm uygulamalar kullanıcı dostu olma, performans ve güvenlik odaklı tasarlanmıştır.",
+        "app-dev-examples-title": "Örnekler (yakında)",
+        "app-dev-examples-placeholder": "Örnek projeler yakında eklenecek.",
+        "services-examples-subtitle": "Geliştirdiğim farklı türde web sitelerini aşağıda görüntüleyin:",
+        "portfolio-title": "Portföyüm",
+        "contact-title": "İletişime Geçin",
+        "contact-intro": "Aşağıdaki iletişim bilgilerini kullanarak benimle iletişime geçmekten çekinmeyin.",
+        "contact-location": "Konum",
+        "contact-phone": "Telefon",
+        "contact-email": "E-posta"
+      }
+    };
+    
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary/30', 'border-primary/50');
+        btn.classList.add('bg-white/10', 'border-white/20');
+      });
+      
+      event.currentTarget.classList.add('active');
+      event.currentTarget.classList.remove('bg-white/10', 'border-white/20');
+      event.currentTarget.classList.add('bg-primary/30', 'border-primary/50');
+    }
+    
+    // Fade cycle effect
+    const fadeTextElement = document.getElementById('fade-cycle-text');
+    const texts = ['Python Specialist', 'JavaScript Expert', 'Software Developer', 'Website Builder', 'Data Analyst', 'Problem Solver', 'Creative Thinker'];
+    let textIndex = 0;
+
+    function fadeEffect() {
+      fadeTextElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        textIndex = (textIndex + 1) % texts.length;
+        fadeTextElement.textContent = texts[textIndex];
+        fadeTextElement.style.opacity = '1';
+      }, 400);
+    }
+
+    setTimeout(() => {
+      setInterval(fadeEffect, 2000);
+    }, 1500);
+  </script>
+</body>
+</html>
