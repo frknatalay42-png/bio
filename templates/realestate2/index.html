@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <title>Nowanest - Vastgoed HTML5 Sjabloon</title>
+
+    <!-- Bootstrap core CSS -->
+
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="./assets/css/fontawesome.css">
+  <link rel="stylesheet" href="./assets/css/templatemo-villa-agency.css">
+  <link rel="stylesheet" href="./assets/css/owl.css">
+  <link rel="stylesheet" href="./assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+<!--
+
+Nowanest Vastgoed
+
+https://templatemo.com/tm-591-villa-agency
+
+-->
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- Unified Dashboard/Header -->
+  <header class="dashboard-header">
+  <div class="dashboard-header-vertical w-100 hero-bg" style="border-bottom: 2px solid #d90429; min-height: 260px; display: flex; align-items: flex-end; background: url('./assets/images/page-heading-bg.jpg') center center/cover no-repeat !important; background-color: transparent !important;">
+    <div class="container">
+      <div class="d-flex flex-row align-items-end justify-content-start py-3" style="width: 100%; gap: 32px;">
+  <img src="./assets/images/salesman1.png" alt="Verkoper" style="height: 160px; width: auto; object-fit: contain; margin-right: 18px; display: block; margin-top: 140px;">
+        <div class="d-flex flex-column flex-grow-1" style="gap: 10px;">
+          <nav class="main-nav dashboard-menu mb-2" style="margin-top: 18px; background: none !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 !important;">
+            <ul class="nav menu-compact d-flex align-items-center justify-content-center" style="gap: 12px; background: none !important;">
+              <li><a class="menu-btn active" href="index.html">Home</a></li>
+              <li><a class="menu-btn" href="properties.html">Eigenschappen</a></li>
+              <li><a class="menu-btn" href="property-details.html">Details</a></li>
+              <li><a class="menu-btn" href="login.html">Log in</a></li>
+            </ul>
+          </nav>
+          <div class="dashboard-bar-info d-flex flex-row align-items-center mb-2" style="gap: 32px; font-size: 1.08rem; font-weight: 600; color: #d90429;">
+            <span><i class="fa fa-envelope"></i> info@nowanest.com</span>
+            <span><i class="fa fa-phone"></i> +90 555 123 4567</span>
+            <span><i class="fa fa-map"></i> Antalya, Turkije</span>
+            <span><i class="fa fa-clock"></i> Ma-Vr 09:00-18:00</span>
+          </div>
+          <div class="dashboard-bar-social d-flex flex-row align-items-center" style="gap: 18px;">
+            <a href="https://facebook.com/nowanest" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/nowanest" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/nowanest" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/nowanest" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <style>
+      .dashboard-bar-info {
+        font-size: 0.78rem !important;
+        font-weight: 500 !important;
+        gap: 10px !important;
+        color: #d90429 !important;
+        letter-spacing: 0.05px;
+      }
+      .dashboard-bar-social a {
+        font-size: 1rem !important;
+        margin-right: 8px !important;
+      }
+      .dashboard-bar-social a:last-child {
+        margin-right: 0 !important;
+      }
+      .dashboard-header-horizontal {
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+      }
+      .dashboard-bar-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 44px;
+        gap: 12px;
+      }
+      .dashboard-bar-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+      }
+      .dashboard-bar-info-block {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: #d90429;
+      }
+      .dashboard-bar-visible {
+        background: #fff;
+        border-bottom: 2px solid #d90429;
+        font-size: 1.15rem;
+        padding: 10px 0 8px 0;
+        color: #d90429;
+        position: relative;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(217,4,41,0.08);
+      }
+      .dashboard-bar-info {
+        color: #d90429;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+      }
+      .dashboard-bar-social a {
+        color: #d90429;
+        margin-right: 14px;
+        font-size: 1.25rem;
+        transition: color 0.2s;
+      }
+      .dashboard-bar-social a:hover {
+        color: #fff;
+        background: #d90429;
+        border-radius: 50%;
+        padding: 2px 6px;
+      }
+      .dashboard-bar-social a:last-child {
+        margin-right: 0;
+      }
+      .dashboard-bar-small {
+        background: #fff;
+        border-bottom: 2px solid #d90429;
+        font-size: 1.15rem;
+        padding: 12px 0 10px 0;
+        color: #d90429;
+        position: relative;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(217,4,41,0.08);
+      }
+      .dashboard-bar-info {
+        color: #d90429;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+      }
+      .dashboard-bar-social a {
+        color: #d90429;
+        margin-right: 14px;
+        font-size: 1.25rem;
+        transition: color 0.2s;
+      }
+      .dashboard-bar-social a:hover {
+        color: #fff;
+        background: #d90429;
+        border-radius: 50%;
+        padding: 2px 6px;
+      }
+      .dashboard-bar-social a:last-child {
+        margin-right: 0;
+      }
+      .menu-btn {
+  color: #229954 !important;
+}
+.dashboard-header-vertical.hero-bg {
+  position: relative;
+  background: #fff;
+}
+.dashboard-header-vertical.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/images/page-heading-bg.jpg') center center/cover no-repeat;
+  opacity: 0.8;
+  z-index: 0;
+}
+.dashboard-header-vertical.hero-bg > * {
+  position: relative;
+  z-index: 1;
+}
+.menu-btn {
+  background: #1a237e;
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+  padding: 8px 22px;
+  transition: background 0.2s;
+}
+.menu-btn:hover, .menu-btn.active {
+  background: #3949ab;
+  color: #fff !important;
+}
+.dashboard-bar-info span {
+  color: #1a237e !important;
+  font-weight: 600;
+  background: rgba(255,255,255,0.85);
+  border-radius: 4px;
+  padding: 2px 10px;
+  margin-right: 8px;
+}
+.dashboard-bar-info i {
+  color: #3949ab !important;
+}
+    </style>
+
+  <!-- Removed duplicate header -->
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner">
+    <div class="owl-carousel owl-banner">
+      <div class="item item-1">
+        <div class="header-text">
+          <span class="category">Antalya, <em>Turkije</em></span>
+          <h2>Nieuw!<br>Ontdek de beste villa voor u</h2>
+        </div>
+      </div>
+      <div class="item item-2">
+        <div class="header-text">
+          <span class="category">Antalya, <em>Turkije</em></span>
+          <h2>Wees er snel bij!<br>Vind uw droomvilla in Antalya</h2>
+        </div>
+      </div>
+      <div class="item item-3">
+        <div class="header-text">
+          <span class="category">Antalya, <em>Turkije</em></span>
+          <h2>Actie!<br>Bekijk het mooiste penthouse</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="featured section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="left-image">
+            <img src="./assets/images/featured.jpg" alt="">
+            <a href="property-details.html"><img src="./assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h6>| Aanbevolen</h6>
+            <h2>Beste Appartement &amp; Zeezicht</h2>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Beste nuttige links?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                Krijg <strong>de beste villa</strong> website sjabloon in HTML CSS en Bootstrap voor uw bedrijf. TemplateMo biedt u de <a href="https://www.google.com/search?q=best+free+css+templates" target="_blank">beste gratis CSS-sjablonen</a> ter wereld. Vertel het alstublieft aan uw vrienden.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Hoe werkt dit?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Waarom is Nowanest de beste?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-table">
+            <ul>
+              <li>
+                <img src="./assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
+                <h4>250 m2<br><span>Totaal Vloeroppervlak</span></h4>
+              </li>
+              <li>
+                <img src="./assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
+                <h4>Contract<br><span>Contract Klaar</span></h4>
+              </li>
+              <li>
+                <img src="./assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
+                <h4>Betaling<br><span>Betalingsproces</span></h4>
+              </li>
+              <li>
+                <img src="./assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
+                <h4>Veiligheid<br><span>24/7 Onder Controle</span></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Video Weergave</h6>
+            <h2>Krijg Dichterbij &amp; Verschillende Gevoelens</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="video-frame">
+            <img src="./assets/images/video-frame.jpg" alt="">
+            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fun-facts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="wrapper">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
+                   <p class="count-text ">Gebouwen<br>Voltooid Nu</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
+                  <p class="count-text ">Jaren<br>Ervaring</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
+                  <p class="count-text ">Awards<br>Gewonnen 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section best-deal">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="section-heading">
+            <h6>| Beste Deal</h6>
+            <h2>Vind Nu Uw Beste Deal!</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="tabs-content">
+            <div class="row">
+              <div class="nav-wrapper ">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartement</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa Huis</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
+                  </li>
+                </ul>
+              </div>              
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="info-table">
+                        <ul>
+                          <li>Totaal Vloeroppervlak <span>185 m2</span></li>
+                          <li>Verdieping nummer <span>26e</span></li>
+                          <li>Aantal kamers <span>4</span></li>
+                          <li>Parkeren Beschikbaar <span>Ja</span></li>
+                          <li>Betalingsproces <span>Bank</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-01.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Extra Informatie Over Eigendom</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. 
+                      <br><br>Wanneer u gratis CSS-sjablonen nodig heeft, kunt u eenvoudig TemplateMo in elke zoekmachine website typen. Bovendien kunt u TemplateMo Portfolio, TemplateMo One Page Layouts, enz. typen.</p>
+                      <div class="icon-button">
+                        <a href="property-details.html"><i class="fa fa-calendar"></i> Plan een bezoek</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="info-table">
+                        <ul>
+                          <li>Totaal Vloeroppervlak <span>250 m2</span></li>
+                          <li>Verdieping nummer <span>26e</span></li>
+                          <li>Aantal kamers <span>5</span></li>
+                          <li>Parkeren Beschikbaar <span>Ja</span></li>
+                          <li>Betalingsproces <span>Bank</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-02.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Detail Informatie Over Villa</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
+                      <div class="icon-button">
+                        <a href="property-details.html"><i class="fa fa-calendar"></i> Plan een bezoek</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="info-table">
+                        <ul>
+                          <li>Totaal Vloeroppervlak <span>320 m2</span></li>
+                          <li>Verdieping nummer <span>34e</span></li>
+                          <li>Aantal kamers <span>6</span></li>
+                          <li>Parkeren Beschikbaar <span>Ja</span></li>
+                          <li>Betalingsproces <span>Bank</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-03.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Extra Informatie Over Penthouse</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
+                      <div class="icon-button">
+                        <a href="property-details.html"><i class="fa fa-calendar"></i> Plan een bezoek</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="properties section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Eigenschappen</h6>
+            <h2>Wij Bieden De Beste Eigenschap Die U Leuk Vindt</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-01.jpg" alt=""></a>
+            <span class="category">Luxe Villa</span>
+            <h6>$2.264.000</h6>
+            <h4><a href="property-details.html">18 Nieuwe Straat Miami, OR 97219</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>8</span></li>
+              <li>Badkamers: <span>8</span></li>
+              <li>Oppervlakte: <span>545m2</span></li>
+              <li>Verdieping: <span>3</span></li>
+              <li>Parkeren: <span>6 plaatsen</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-02.jpg" alt=""></a>
+            <span class="category">Luxe Villa</span>
+            <h6>$1.180.000</h6>
+            <h4><a href="property-details.html">54 Midden Straat Florida, OR 27001</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>6</span></li>
+              <li>Badkamers: <span>5</span></li>
+              <li>Oppervlakte: <span>450m2</span></li>
+              <li>Verdieping: <span>3</span></li>
+              <li>Parkeren: <span>8 plaatsen</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-03.jpg" alt=""></a>
+            <span class="category">Luxe Villa</span>
+            <h6>$1.460.000</h6>
+            <h4><a href="property-details.html">26 Oude Straat Miami, OR 38540</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>5</span></li>
+              <li>Badkamers: <span>4</span></li>
+              <li>Oppervlakte: <span>225m2</span></li>
+              <li>Verdieping: <span>3</span></li>
+              <li>Parkeren: <span>10 plaatsen</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-04.jpg" alt=""></a>
+            <span class="category">Appartement</span>
+            <h6>$584.500</h6>
+            <h4><a href="property-details.html">12 Nieuwe Straat Miami, OR 12650</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>4</span></li>
+              <li>Badkamers: <span>3</span></li>
+              <li>Oppervlakte: <span>125m2</span></li>
+              <li>Verdieping: <span>25e</span></li>
+              <li>Parkeren: <span>2 auto's</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-05.jpg" alt=""></a>
+            <span class="category">Penthouse</span>
+            <h6>$925.600</h6>
+            <h4><a href="property-details.html">34 Strand Straat Miami, OR 42680</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>4</span></li>
+              <li>Badkamers: <span>4</span></li>
+              <li>Oppervlakte: <span>180m2</span></li>
+              <li>Verdieping: <span>38e</span></li>
+              <li>Parkeren: <span>2 auto's</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="./assets/images/property-06.jpg" alt=""></a>
+            <span class="category">Modern Condo</span>
+            <h6>$450.000</h6>
+            <h4><a href="property-details.html">22 Nieuwe Straat Portland, OR 16540</a></h4>
+            <ul>
+              <li>Slaapkamers: <span>3</span></li>
+              <li>Badkamers: <span>2</span></li>
+              <li>Oppervlakte: <span>165m2</span></li>
+              <li>Verdieping: <span>26e</span></li>
+              <li>Parkeren: <span>3 auto's</span></li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Plan een bezoek</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Contact</h6>
+            <h2>Neem contact op met onze makelaars</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="item phone">
+                <img src="./assets/images/phone-icon.png" alt="" style="max-width: 52px;">
+                <h6>+90 555 123 4567<br><span>Telefoonnummer</span></h6>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="item email">
+                <img src="./assets/images/email-icon.png" alt="" style="max-width: 52px;">
+                <h6>info@nowanest.com<br><span>Zakelijk e-mail</span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <form id="contact-form" action="" method="post">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="name">Naam</label>
+                  <input type="name" name="name" id="name" placeholder="Uw naam..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="email">E-mailadres</label>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Uw e-mail..." required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="subject">Onderwerp</label>
+                  <input type="subject" name="subject" id="subject" placeholder="Onderwerp..." autocomplete="on" >
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="message">Bericht</label>
+                  <textarea name="message" id="message" placeholder="Uw bericht"></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Verstuur bericht</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-8">
+  <p>Copyright © 2048 Nowanest Co., Ltd. Alle rechten voorbehouden. 
+        
+        Ontwerp: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
+  <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./assets/js/isotope.min.js"></script>
+  <script src="./assets/js/owl-carousel.js"></script>
+  <script src="./assets/js/counter.js"></script>
+  <script src="./assets/js/custom.js"></script>
+
+  </body>
+</html>
