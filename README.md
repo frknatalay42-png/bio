@@ -1,82 +1,81 @@
-# 🌐 Bio – Persoonlijke Portfolio Website
+# 🌐 Bio – Personal Portfolio Website
 
-Een voorbeeld **persoonlijke portfolio / bio-website** bedoeld voor toekomstige klanten.  
-Deze site laat jouw werk, interesses en visuele stijl zien en kan worden hergebruikt of aangepast voor eigen promotie.
+A **sample personal portfolio / bio website** intended for prospective clients.  
+This website highlights your work, interests, and visual style, and can be reused or customized for self-promotion.
 
-🎯 **Doel:**  
-Professionaliseer je online aanwezigheid met een eenvoudige, aantrekkelijke landing page die jouw verhaal vertelt.
-
----
-
-## 📌 Inhoud van deze repository
-
-📂 **Bestanden & mappen**
-- `index.html` – de hoofdpagina van je website  
-- `img*.jpg / .jpeg / .png` – afbeeldingen gebruikt in de bio/portfolio  
-- `.github/workflows/` & `templates/` – GitHub-workflow & sjablonen (optioneel)  
-- etc.:contentReference[oaicite:1]{index=1}
+🎯 **Purpose:**  
+Enhance your online presence with a simple, attractive landing page that tells your story.
 
 ---
 
-## 🚀 Functionaliteit
+## 📌 Repository Contents
 
-✔️ Statische website (HTML, CSS, JavaScript)  
-✔️ Visuele presentatie met afbeeldingen  
-✔️ Geschikt als portfolio/bio pagina voor klanten
+📂 **Files & folders**
+- `index.html` – main webpage  
+- `img*.jpg / .jpeg / .png` – images used in the bio/portfolio  
+- `.github/workflows/` & `templates/` – optional GitHub workflows & templates  
+- etc.
 
 ---
 
-## 🛠️ Lokale weergave (how-to)
+## 🚀 Features
 
-**Zo bekijk je de site lokaal:**
+✔️ Static website (HTML, CSS, JavaScript)  
+✔️ Visual portfolio with images  
+✔️ Suitable as a client-facing bio or portfolio page
 
-1. Clone deze repository:
+---
+
+## 🛠️ Local Setup (How to View)
+
+**To view the website locally:**
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/frknatalay42-png/bio.git
-Ga naar de projectmap:
+Navigate to the project folder:
 
 bash
 Code kopiëren
 cd bio
-Open index.html in je browser (dubbelklik, of via live server).
+Open index.html in your browser (double-click or via live server).
 
-📦 Technologieën
+📦 Technologies
 HTML
 
 CSS
 
 JavaScript
 
-Optioneel: GitHub Pages voor hosting
+Optional: GitHub Pages for hosting
 
-📌 Hosting (optioneel)
-Je kunt deze site gratis hosten via GitHub Pages:
+📌 Hosting (Optional)
+You can host this site for free via GitHub Pages:
 
-Ga naar Settings → Pages
+Go to Settings → Pages
 
-Selecteer de main branch + /root
+Select the main branch + /root
 
-Klik op Save
+Click Save
 
-Je site wordt gepubliceerd als:
+Your site will be published at:
 
 bash
 Code kopiëren
 https://frknatalay42-png.github.io/bio
-📷 Screenshots & Voorbeeld
-Voeg hier eventueel preview-afbeeldingen van de website toe:
+📷 Screenshots & Preview
+Add preview images of your website here:
 
 markdown
 Code kopiëren
 ![Home Screenshot](img1.jpg)
-![Over Mij](img2.jpeg)
-(Vervang namen door juiste afbeeldingsbestanden uit de repo)
+![About Me](img2.jpeg)
+(Replace the filenames with the actual images in your repository)
 
 📬 Contact
-Wil je samenwerken of heb je vragen?
+Interested in collaborating or have questions?
 
-LinkedIn • Website • Portfolio
+⭐ Acknowledgements
 
-⭐ Dankwoord
-Bedankt voor het bekijken van dit project!
-Als je dit nuttig vindt, laat een ster ⭐ achter op GitHub 😊
+Thank you for checking out this project!
+If you find it useful, leave a star ⭐ on GitHub 😊
