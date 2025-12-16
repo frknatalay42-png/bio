@@ -74,7 +74,6 @@ Code kopiëren
 
 📬 Contact
 Wil je samenwerken of heb je vragen?
-📧 E-mail: <jouw e-mail hier>
 
 LinkedIn • Website • Portfolio
 
